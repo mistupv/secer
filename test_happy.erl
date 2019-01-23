@@ -34,3 +34,25 @@ comp_perf(TO,TN) ->
 		end,
 	true , 
 	ZippedList).
+
+config() ->
+	secer_api:nuai_tr_config(mytecf(),ubrm()).
+
+mytecf() ->
+	fun(TO,TN) ->
+		VEF = secer_api:vef_value_only(),
+		case VEF(TO) == VEF(TN) of
+			true ->
+				true;
+			false ->
+				case secer_api:get_te_ca(TO) == secer_api:get_te_ca(TN) of
+					true ->
+						different_value_same_args;
+					false ->
+						different_value_different_args
+				end
+		end
+	end.
+
+ubrm() ->
+	[{different_value_same_args,[val,ca]},{different_value_different_args,[val,ca]}].

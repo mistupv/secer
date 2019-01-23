@@ -4,4 +4,8 @@ $ git clone --recursive https://github.com/serperu/secer.git
 $ cd secer/
 $ make 
 
+PLAIN POI TESTING
 $ ./secer -pois "test_happy:rel1()" -funs "test_happy:funs()" -to 15
+
+ENHANCED POI TESTING 
+$ ./secer -pois "test_happy:rel1()" -funs "test_happy:funs()" -to 15 -config "test_happy:config()"
